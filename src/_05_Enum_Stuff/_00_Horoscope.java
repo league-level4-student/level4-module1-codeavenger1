@@ -10,5 +10,48 @@ public class _00_Horoscope {
 	//    a different horoscope based on the Zodiac's state.
 	
 	// 3. Make a main method to test your method
-	
+	public static void main(String[] args) {
+		main2(Zodiac.AQUARIUS);
+	}
+	public static void main2(Zodiac horoscope){
+		
+		switch(horoscope) {
+		case ARIES:
+			JOptionPane.showMessageDialog(null, "cancer");
+			break;
+		case TAURUS:
+			JOptionPane.showMessageDialog(null, "virgo");
+			break;
+		case GEMINI:
+			JOptionPane.showMessageDialog(null, "capricorn");
+			break;
+		case CANCER:
+			JOptionPane.showMessageDialog(null, "scorpio");
+			break;
+		case LEO:
+			JOptionPane.showMessageDialog(null, "aries");
+			break;
+		case VIRGO:
+			JOptionPane.showMessageDialog(null, "gemini");
+			break;
+		case LIBRA:
+			JOptionPane.showMessageDialog(null, "aquarius");
+			break;
+		case SCORPIO:
+			JOptionPane.showMessageDialog(null, "taurus");
+			break;
+		case SAGITTARIUS:
+			JOptionPane.showMessageDialog(null, "leo");
+			break;
+		case CAPRICORN:
+			JOptionPane.showMessageDialog(null, "pisces");
+			break;
+		case AQUARIUS:
+			JOptionPane.showMessageDialog(null, "libra");
+			break;
+		case PISCES:
+			JOptionPane.showMessageDialog(null, "sagittarius");
+			break;
+		}
+	}
 }
