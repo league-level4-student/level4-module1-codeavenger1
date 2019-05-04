@@ -36,42 +36,26 @@ public class Snake {
 	public void update() {
 		//1. use a switch statement to check on the currentDirection
 		//   of the snake and calculate its next x and y position.
-		int x;
-		int y;
-		
+		int x = head.getLocation().x;
+		int y = head.getLocation().y;
 		
 		switch(currentDirection) {
 		case RIGHT:
-			if (head.getLocation().x >= 14) {
-				x = 0;
-			}
-			else {
 				x = head.getLocation().x+1;
-			}
+			
 		break;
 		case LEFT:
-			if (head.getLocation().x <=0) {
-				x = 15;
-			}
-			else {
+			
 				x = head.getLocation().x-1;
-			}
+			
 		break;
 		case UP:
-			if (head.getLocation().y <= 0) {
-				y = 12;
-			}
-			else {
-				y = head.getLocation().y+1;
-			}
+			y = head.getLocation().y-1;
+		
 		break;
 		case DOWN:
-			if (head.getLocation().y >= 11) {
-				y = 0;
-			}
-			else {
-				y = head.getLocation().y-1;
-			}
+				y = head.getLocation().y+1;
+			break;
 		}
 
 		//2. Iterate through the SnakeSegments in reverse order
@@ -81,12 +65,12 @@ public class Snake {
 			
 			snake.get(i).setLocation(snake.get(i-1).getLocation());
 		
-		
-		//3. set the location of the head to the new location calculated in step 1
-	if (i == 0) {
-				snake.get(i).setLocation(head.getLocation());
-			}
 		}
+		//3. set the location of the head to the new location calculated in step 1
+	
+		head.setLocation(new Location(x, y));
+		
+		
 		//4. set canMove to true
 		 canMove = true;
 	}
@@ -95,36 +79,66 @@ public class Snake {
 		//1. set the current direction equal to the passed in Direction only if canMove is true.
 		//   set canMove equal to false.
 		//   make sure the snake cannot completely reverse directions.
-		
+		if (canMove == true) {
+			canMove = false;
+			if (currentDirection.equals(Direction.LEFT) && d.equals(currentDirection.RIGHT)) {
+				
+			}
+			else if (currentDirection.equals(Direction.RIGHT) && d.equals(currentDirection.LEFT)) {
+				
+			}
+			else if (currentDirection.equals(Direction.DOWN) && d.equals(currentDirection.UP)) {
+				
+			}
+			else if (currentDirection.equals(Direction.UP) && d.equals(currentDirection.DOWN)) {
+				
+			}
+					currentDirection.equals(d);
+
+		}
 	}
 
 	public void reset(Location loc) {
 		//1. clear the snake
+		snake.clear();
 		
 		//2. set the location of the head
-		
+		head.setLocation(loc);
 		//3. add the head to the snake
-		
+		snake.add(head);
 	}
 
 	public boolean isOutOfBounds() {
 		//1. complete the method so it returns true if the head of the snake is outside of the window
 		//   and false otherwise
+		if (head.getLocation().x > 15 || head.getLocation().y > 12 || head.getLocation().x < 0 || head.getLocation().y < 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 		
-		return false;
 	}
 	
 	public boolean isHeadCollidingWithBody() {
 		//1. complete the method so it returns true if the head is located
 		//   in the same location as any other body segment
-		
+		for (int i = 1; i < snake.size(); i++) {
+			if (head.getLocation().equals(snake.get(i).getLocation())) {
+				return true;
+			}
+		}
 		return false;
 	}
 
 	public boolean isLocationOnSnake(Location loc) {
 		//1. complete the method so it returns true if the passed in
 		//   location is located on the snake
-		
+		for (int i = 0; i < snake.size(); i++) {
+			if (loc.equals(snake.get(i).getLocation())) {
+				return true;
+			}
+		}
 		return false;
 	}
 

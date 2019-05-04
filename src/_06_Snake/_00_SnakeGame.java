@@ -75,7 +75,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 
 	public void startGame() {
 		// 1. Save the instructions for the game in the following string variable.
-		String instructions = "How to play:\ndon't die";
+		String instructions = "How to play: Don't die";
 
 		String[] options = new String[] { "Expert", "Moderate", "Beginner" };
 		int input = JOptionPane.showOptionDialog(null, instructions, "Snake", 0, -1, null, options, 0);
@@ -87,13 +87,13 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// of the game. The smaller the number, the faster it goes.
 		switch (choice) {
 		case "Expert":
-			timer.setDelay(3);
+			timer.setDelay(300);
 			break;
 		case "Moderate":
-			timer.setDelay(6);
+			timer.setDelay(600);
 			break;
 		case "Beginner":
-			timer.setDelay(9);
+			timer.setDelay(900);
 			break;
 		}
 		// 3. start the timer
@@ -120,16 +120,16 @@ System.out.println(e);
 		// if an arrow key is pressed, set the snake's
 		// direction accordingly
 		case 37:
-			Direction left = Direction.LEFT;
+			snake.setDirection(Direction.LEFT);
 			break;
 		case 38:
-			Direction up = Direction.UP;
+			snake.setDirection(Direction.UP);
 			break;
 		case 39:
-			Direction right = Direction.RIGHT;
+			snake.setDirection(Direction.RIGHT);
 			break;
 		case 40:
-			Direction down = Direction.DOWN;
+			snake.setDirection(Direction.DOWN);
 			break;
 		// if the space key is pressed, call the snake's feed method
 		case 32:
@@ -186,7 +186,7 @@ System.out.println(e);
 		// or if the snake is out of bounds, call gameOver
 			if (snake.isHeadCollidingWithBody()|| snake.isOutOfBounds()) {
 				JOptionPane.showMessageDialog(null, "game over");
-				System.exit(1);
+				gameOver();
 			}
 		// 3. if the location of the head is equal to the location of the food,
 		// feed the snake and set the food location
