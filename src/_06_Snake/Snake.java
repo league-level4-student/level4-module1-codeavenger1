@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Snake {
 	public static final Color SNAKE_COLOR = Color.BLUE;
-	public static final int BODY_SIZE = 50;
+	public static final int BODY_SIZE = 25;
 
 	private SnakeSegment head;
 	private ArrayList<SnakeSegment> snake;
@@ -38,7 +38,7 @@ public class Snake {
 		//   of the snake and calculate its next x and y position.
 		int x = head.getLocation().x;
 		int y = head.getLocation().y;
-		
+		System.out.println(currentDirection);
 		switch(currentDirection) {
 		case RIGHT:
 				x = head.getLocation().x+1;
@@ -81,20 +81,23 @@ public class Snake {
 		//   make sure the snake cannot completely reverse directions.
 		if (canMove == true) {
 			canMove = false;
-			if (currentDirection.equals(Direction.LEFT) && d.equals(currentDirection.RIGHT)) {
+			System.out.println("set direction called");
+			if (currentDirection.equals(Direction.LEFT) && d.equals(Direction.RIGHT)) {
 				
 			}
-			else if (currentDirection.equals(Direction.RIGHT) && d.equals(currentDirection.LEFT)) {
+			else if (currentDirection.equals(Direction.RIGHT) && d.equals(Direction.LEFT)) {
 				
 			}
-			else if (currentDirection.equals(Direction.DOWN) && d.equals(currentDirection.UP)) {
+			else if (currentDirection.equals(Direction.DOWN) && d.equals(Direction.UP)) {
 				
 			}
-			else if (currentDirection.equals(Direction.UP) && d.equals(currentDirection.DOWN)) {
+			else if (currentDirection.equals(Direction.UP) && d.equals(Direction.DOWN)) {
 				
 			}
-					currentDirection.equals(d);
-
+			else {
+					currentDirection = d;
+					System.out.println("direction set");
+			}
 		}
 	}
 
@@ -111,7 +114,7 @@ public class Snake {
 	public boolean isOutOfBounds() {
 		//1. complete the method so it returns true if the head of the snake is outside of the window
 		//   and false otherwise
-		if (head.getLocation().x > 15 || head.getLocation().y > 12 || head.getLocation().x < 0 || head.getLocation().y < 0) {
+		if (head.getLocation().x > 30 || head.getLocation().y > 24 || head.getLocation().x < 0 || head.getLocation().y < 0) {
 			return true;
 		}
 		else {

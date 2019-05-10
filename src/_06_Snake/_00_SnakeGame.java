@@ -22,9 +22,9 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	public static final Color BORDER_COLOR = Color.WHITE;
 	public static final Color BACKGROUND_COLOR = Color.BLACK;
 	public static final Color FOOD_COLOR = Color.RED;
-	public static final int WIDTH = 15;
-	public static final int HEIGHT = 12;
-	public static final int WINDOW_SCALE = 50;
+	public static final int WIDTH = 30;
+	public static final int HEIGHT = 24;
+	public static final int WINDOW_SCALE = 25;
 	public static final int WINDOW_WIDTH = WINDOW_SCALE * WIDTH;
 	public static final int WINDOW_HEIGHT = WINDOW_SCALE * HEIGHT;
 
@@ -87,13 +87,13 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// of the game. The smaller the number, the faster it goes.
 		switch (choice) {
 		case "Expert":
-			timer.setDelay(300);
+			timer.setDelay(80);
 			break;
 		case "Moderate":
-			timer.setDelay(600);
+			timer.setDelay(200);
 			break;
 		case "Beginner":
-			timer.setDelay(900);
+			timer.setDelay(300);
 			break;
 		}
 		// 3. start the timer
@@ -114,7 +114,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		// 1. Use a switch statement on e.getKeyCode()
 		// to determine which key was pressed.
-System.out.println(e);
+System.out.println(e.getKeyCode());
 		switch (e.getKeyCode()) {
 
 		// if an arrow key is pressed, set the snake's
@@ -190,7 +190,7 @@ System.out.println(e);
 			}
 		// 3. if the location of the head is equal to the location of the food,
 		// feed the snake and set the food location
-			if (snake.getHeadLocation() == foodLocation) {
+			if (snake.getHeadLocation().equals(foodLocation)) {
 				snake.feed();
 				foodLocation = new Location(rand.nextInt(WIDTH), rand.nextInt(HEIGHT));
 			}
